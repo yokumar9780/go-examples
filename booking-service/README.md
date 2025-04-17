@@ -1,7 +1,14 @@
 # Booking Service (Go Spring Boot-Style)
 
 This project demonstrates a Go project structure inspired by Java Spring Boot, using
-the [Gin](https://github.com/gin-gonic/gin) web framework and Swagger for API documentation.
+
+This project demonstrates a Go project structure inspired by Java Spring Boot, using:
+* [Gin](https://github.com/gin-gonic/gin): High-performance HTTP web framework for building RESTful APIs in Go.
+* **Clean Folder Structure**: Modular, layered project layout inspired by Spring Boot for better maintainability and separation of concerns.
+* [GORM](https://gorm.io/): Powerful ORM for Go that simplifies database interactions with models and migrations.
+* [Swagger](https://github.com/swaggo/gin-swagger): Auto-generates interactive API documentation from code annotations.
+* [Validator](https://github.com/go-playground/validator): Robust data validation library for struct-based input checking.
+* **PostgreSQL**: Reliable open-source relational database used for persisting application data.
 
 ---
 
@@ -13,7 +20,7 @@ the [Gin](https://github.com/gin-gonic/gin) web framework and Swagger for API do
 * Modular layers (controller, service, repository)
 * RESTful CRUD routes
 * Manual dependency injection
-* In-memory storage
+* PostgreSQL DB storage
 * Booking model includes field validation using go-playground/validator.
 
 #### Project Structure

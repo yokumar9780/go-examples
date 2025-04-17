@@ -1,6 +1,7 @@
 package main
 
 import (
+	"booking-service/config"
 	"booking-service/controller"
 	"booking-service/middleware"
 	"github.com/gin-gonic/gin"
@@ -11,7 +12,6 @@ import (
 	"booking-service/repository"
 	"booking-service/routes"
 	"booking-service/service"
-	log "github.com/sirupsen/logrus"
 )
 
 // @title Booking API
@@ -20,13 +20,8 @@ import (
 // @host localhost:8080
 // @BasePath /
 func main() {
-
-	log.SetFormatter(&log.JSONFormatter{
-		PrettyPrint: true,
-	})
-	log.SetLevel(log.InfoLevel)
-
-	repo := repository.NewBookingRepository()
+	config.InitConfig()
+	repo := repository.NewBookingRepository(config.DB)
 	svc := service.NewBookingService(repo)
 	ctrl := controller.NewBookingController(svc)
 
