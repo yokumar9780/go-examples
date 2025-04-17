@@ -3,6 +3,7 @@ package repository
 import (
 	"booking-service/model"
 	"errors"
+	log "github.com/sirupsen/logrus"
 )
 
 type BookingRepository interface {
@@ -29,6 +30,7 @@ func (repo *bookingRepositoryImpl) Create(booking model.Booking) (model.Booking,
 	booking.ID = repo.autoIncrementID
 	repo.data[repo.autoIncrementID] = booking
 	repo.autoIncrementID++
+	log.Info("A booking appears", booking)
 	return booking, nil
 }
 

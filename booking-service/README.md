@@ -10,7 +10,11 @@ the [Gin](https://github.com/gin-gonic/gin) web framework and Swagger for API do
 * Clean modular structure inspired by Spring Boot
 * RESTful CRUD endpoints using Gin
 * Integrated Swagger documentation
-* Easily extensible and production-friendly
+* Modular layers (controller, service, repository)
+* RESTful CRUD routes
+* Manual dependency injection
+* In-memory storage
+* Booking model includes field validation using go-playground/validator.
 
 #### Project Structure
 

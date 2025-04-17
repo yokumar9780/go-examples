@@ -72,6 +72,11 @@ func (c *BookingController) Create(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
+	//validation
+	if err := booking.Validate(); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"validation_error": err.Error()})
+		return
+	}
 	result, _ := c.bookingService.Create(booking)
 	ctx.JSON(http.StatusCreated, result)
 }
@@ -91,6 +96,10 @@ func (c *BookingController) Update(ctx *gin.Context) {
 	var booking model.Booking
 	if err := ctx.ShouldBindJSON(&booking); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	if err := booking.Validate(); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"validation_error": err.Error()})
 		return
 	}
 	updated, err := c.bookingService.Update(id, booking)
