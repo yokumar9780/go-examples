@@ -3,13 +3,16 @@
 This project demonstrates a Go project structure inspired by Java Spring Boot, using
 
 This project demonstrates a Go project structure inspired by Java Spring Boot, using:
+
 * [Gin](https://github.com/gin-gonic/gin): High-performance HTTP web framework for building RESTful APIs in Go.
-* **Clean Folder Structure**: Modular, layered project layout inspired by Spring Boot for better maintainability and separation of concerns.
+* **Clean Folder Structure**: Modular, layered project layout inspired by Spring Boot for better maintainability and
+  separation of concerns.
 * [GORM](https://gorm.io/): Powerful ORM for Go that simplifies database interactions with models and migrations.
 * [Swagger](https://github.com/swaggo/gin-swagger): Auto-generates interactive API documentation from code annotations.
-* [Validator](https://github.com/go-playground/validator): Robust data validation library for struct-based input checking.
+* [Validator](https://github.com/go-playground/validator): Robust data validation library for struct-based input
+  checking.
 * **PostgreSQL**: Reliable open-source relational database used for persisting application data.
-
+*  Dockerfile and Makefile setup
 ---
 
 #### Features
@@ -69,3 +72,10 @@ swag init --generalInfo cmd/main.go --output ./docs
 go run cmd/main.go
 ```
 
+#### Use Makefile:
+
+```bash
+make build     # to build the Go app
+make run       # to run the app
+make swag      # to generate Swagger docs
+```
