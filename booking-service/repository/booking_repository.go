@@ -1,8 +1,8 @@
 package repository
 
 import (
+	"booking-service/model"
 	"errors"
-	"github.com/yokumar9780/booking-service/model"
 )
 
 type BookingRepository interface {

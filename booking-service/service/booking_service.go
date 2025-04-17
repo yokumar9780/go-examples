@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/yokumar9780/booking-service/model"
-	"github.com/yokumar9780/booking-service/repository"
+	"booking-service/model"
+	"booking-service/repository"
 )
 
 type BookingService interface {

@@ -1,9 +1,9 @@
 package controller
 
 import (
+	"booking-service/model"
+	"booking-service/service"
 	"github.com/gin-gonic/gin"
-	"github.com/yokumar9780/booking-service/model"
-	"github.com/yokumar9780/booking-service/service"
 	"net/http"
 	"strconv"
 )

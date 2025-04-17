@@ -1,14 +1,14 @@
 package main
 
 import (
+	"booking-service/controller"
 	swaggerFiles "github.com/swaggo/files"     // swagger embed files
 	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
-	"github.com/yokumar9780/booking-service/controller"
 
-	_ "github.com/volvogroup/booking-service/docs" // This registers the Swagger docs
-	"github.com/yokumar9780/booking-service/repository"
-	"github.com/yokumar9780/booking-service/routes"
-	"github.com/yokumar9780/booking-service/service"
+	_ "booking-service/docs" // This registers the Swagger docs
+	"booking-service/repository"
+	"booking-service/routes"
+	"booking-service/service"
 )
 
 // @title Booking API

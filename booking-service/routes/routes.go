@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"booking-service/controller"
 	"github.com/gin-gonic/gin"
-	"github.com/yokumar9780/booking-service/controller"
 )
 
 func SetupRouter(controller *controller.BookingController) *gin.Engine {

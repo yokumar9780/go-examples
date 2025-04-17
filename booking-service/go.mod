@@ -1,4 +1,4 @@
-module github.com/yokumar9780/booking-service
+module booking-service
 
 go 1.24.2
 
