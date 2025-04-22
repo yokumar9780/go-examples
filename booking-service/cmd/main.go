@@ -3,15 +3,12 @@ package main
 import (
 	"booking-service/config"
 	"booking-service/controller"
-	"booking-service/middleware"
-	"github.com/gin-gonic/gin"
-	swaggerFiles "github.com/swaggo/files"     // swagger embed files
-	ginSwagger "github.com/swaggo/gin-swagger" // gin-swagger middleware
-
 	_ "booking-service/docs" // This registers the Swagger docs
+	"booking-service/middleware"
 	"booking-service/repository"
 	"booking-service/routes"
 	"booking-service/service"
+	echoSwagger "github.com/swaggo/echo-swagger"
 )
 
 // @title Booking API
@@ -21,23 +18,14 @@ import (
 // @BasePath /
 func main() {
 	config.InitConfig()
+	middleware.SetupJWKS()
 	repo := repository.NewBookingRepository(config.DB)
 	svc := service.NewBookingService(repo)
 	ctrl := controller.NewBookingController(svc)
 
 	r := routes.SetupRouter(ctrl)
+	r.GET("/swagger/*", echoSwagger.WrapHandler)
 
-	// Register logging middleware
-	r.Use(gin.Recovery()) // Panic recovery
-	//Request ID: adds a unique ID per request for traceability
-	r.Use(middleware.RequestIDMiddleware())
-	r.Use(middleware.LoggingMiddleware()) // Logging: logs all requests with method, path, status, duration, and request ID
-	//CORS: enables cross-origin requests
-	r.Use(middleware.CORSMiddleware())
+	r.Logger.Fatal(r.Start(":8080"))
 
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	err := r.Run(":8080")
-	if err != nil {
-		return
-	}
 }

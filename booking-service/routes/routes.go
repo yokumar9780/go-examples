@@ -2,12 +2,19 @@ package routes
 
 import (
 	"booking-service/controller"
-	"github.com/gin-gonic/gin"
+	"booking-service/middleware"
+	"github.com/labstack/echo/v4"
+	echoMiddleware "github.com/labstack/echo/v4/middleware"
 )
 
-func SetupRouter(controller *controller.BookingController) *gin.Engine {
-	//r := gin.Default()
-	r := gin.New()
-	controller.RegisterRoutes(r)
-	return r
+func SetupRouter(controller *controller.BookingController) *echo.Echo {
+	e := echo.New()
+	e.Use(echoMiddleware.Recover())
+	e.Use(echoMiddleware.Logger())
+	e.Use(echoMiddleware.CORS())
+	e.Use(middleware.RequestIDMiddleware)
+	e.Use(middleware.LoggingMiddleware)
+	e.Use(middleware.JWTAuthMiddleware)
+	controller.RegisterRoutes(e)
+	return e
 }

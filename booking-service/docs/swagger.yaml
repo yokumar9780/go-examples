@@ -3,13 +3,22 @@ definitions:
   model.Booking:
     properties:
       customer_name:
+        minLength: 2
         type: string
       date:
         type: string
       id:
         type: integer
       status:
+        enum:
+        - confirmed
+        - cancelled
+        - pending
         type: string
+    required:
+    - customer_name
+    - date
+    - status
     type: object
   model.ErrorResponse:
     properties:

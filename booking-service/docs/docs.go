@@ -179,9 +179,15 @@ const docTemplate = `{
     "definitions": {
         "model.Booking": {
             "type": "object",
+            "required": [
+                "customer_name",
+                "date",
+                "status"
+            ],
             "properties": {
                 "customer_name": {
-                    "type": "string"
+                    "type": "string",
+                    "minLength": 2
                 },
                 "date": {
                     "type": "string"
@@ -190,7 +196,12 @@ const docTemplate = `{
                     "type": "integer"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "confirmed",
+                        "cancelled",
+                        "pending"
+                    ]
                 }
             }
         },
